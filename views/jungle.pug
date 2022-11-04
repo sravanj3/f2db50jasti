@@ -1,0 +1,18 @@
+extends layout 
+block content 
+  h1=title 
+    - let results = [{"animal_name":"Tiger","animal_type":"male","animal_quantity":4,},{"animal_name":"Lion","animal_type":"male","animal_quantity":1},{"animal_name":"Monkey","animal_type":"female","animal_quantity":30}]
+  div(class="container-fluid")
+  div(class="row")
+    each jungle,index in results 
+                table(style='width:100%')
+                    tr 
+                        div(class="col-sm-2" onclick=`buy(${index})`) #{jungle.animal_name}
+                        div(class="col-sm-2" onclick=`buy(${index})`) #{jungle.animal_type}
+                        div(class="col-sm-2" onclick=`buy(${index})`) #{jungle.animal_quantity}
+    script.
+     
+      function buy(itemNo)
+      {
+        alert(`Your animal ${itemNo+1}`)
+      }                      
