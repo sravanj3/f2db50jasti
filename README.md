@@ -1,6 +1,6 @@
-# f2wb50jasti
+# f2db50jasti
 
-renderlink:https://f2wb50jasti.onrender.com
+renderlink:https://f2db50jasti.onrender.com
 
 ### Class jungle details :
 My class name is jungle
