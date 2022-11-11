@@ -18,3 +18,7 @@ router.get('/jungles/:id', jungle_controller.jungle_detail);
 // GET request for list of all jungle items.
 router.get('/jungles', jungle_controller.jungle_list);
 module.exports = router;
+
+// GET request for one jungle.
+
+router.get('/jungle/:id', jungle_controller.jungle_detail);
