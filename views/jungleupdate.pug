@@ -1,0 +1,42 @@
+extends layout 
+block content 
+  h1= title 
+  if (toShow == null)
+    h2 No instance to delete 
+  else
+  - let jungleid = toShow._id 
+  - let animal_name = toShow.animal_name
+  - let animal_type = toShow.animal_type
+  - let animal_quantity = toShow.animal_quantity
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{jungleid} 
+  - let actionid = "/resource/jungle/" + jungleid 
+  form(id='jungleForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.jungleAttr(for='animal_name') Animal Name 
+        input#animal_name(type='text', name='animal_name', value= animal_name ) 
+    div.form-group 
+        label.jungleAttr(for='animal_type') Animal Type 
+        input#animal_type(type='text', name='animal_type', value= animal_type ) 
+    div.form-group 
+        label.jungleAttr(for='animal_quantity') Animal Quantity
+        input#animal_quantity(type='number', name='animal_quantity', value= animal_quantity )    
+    input(type="submit") 
+  script. 
+    document.forms['jungleForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    });

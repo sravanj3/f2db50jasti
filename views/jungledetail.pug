@@ -1,0 +1,24 @@
+extends layout 
+ 
+block content 
+  h1= title 
+  if (toShow == null)
+    h2 No instance to delete 
+  else 
+  - let jungleid = toShow._id 
+  - let animal_name = toShow.animal_name
+  - let animal_type = toShow.animal_type
+  - let animal_quantity = toShow.animal_quantity
+  div 
+    div.row 
+      div(class='jungleAttr mr-3') jungle ID is: 
+      div #{jungleid} 
+    div.row 
+      div(class='jungleAttr mr-3') Animal Name is: 
+      div #{animal_name} 
+    div.row 
+      div(class='jungleAttr mr-3') Animal Type is: 
+      div #{animal_type} 
+    div.row 
+      div(class='jungleAttr mr-3') Animal Quantity is: 
+      div #{animal_quantity}

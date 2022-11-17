@@ -1,0 +1,49 @@
+extends layout 
+block content 
+  h1= title 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let jungleid = toShow._id 
+    - let animal_name = toShow.animal_name
+    - let animal_type = toShow.animal_type
+    - let animal_quantity = toShow.animal_quantity
+    - let actionid = "/resource/jungle/" + jungleid 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row 
+        div(class='jungleAttr mr-3') jungle ID is: 
+        div #{jungleid} 
+      div.row 
+        div(class='jungleAttr mr-3') Animal Name is: 
+        div #{animal_name} 
+      div.row 
+        div(class='jungleAttr mr-3') Animal Type is: 
+        div #{animal_type} 
+      div.row 
+        div(class='jungleAttr mr-3') Animal Quantity is: 
+        div #{animal_quantity}   
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the jungle collection 
+      window.location.href='/jungle' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'   
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/jungle' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    }

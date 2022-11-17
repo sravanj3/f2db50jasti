@@ -10,5 +10,4 @@ router.get('/', function(req, res, next) {
     console.log(`cols ${cols}`)
     res.render('gridbuild', {title: 'Grid Build', query: query});
 });
-
 module.exports = router;
